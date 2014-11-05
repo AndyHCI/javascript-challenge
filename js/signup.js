@@ -125,6 +125,16 @@ function validateRequiredField(field) {
     	valid &= zipRegExp.test(value);
     }
 
+   	// sees if birthdate is a number 
+    if (field.name == 'birthdate') {
+    	// takes out forward slashes (10/10/2000 -> 10102000)
+    	var test = value.replace(/\//g,'');
+    	test = !isNaN(test);
+    	valid &= test;
+    	console.log(test);
+    }
+
+
     if (valid) {
         field.className = 'form-control';
     } else {
